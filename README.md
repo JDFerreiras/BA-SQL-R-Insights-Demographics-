@@ -3,9 +3,9 @@
 This project analyzes U.S. demographic and economic data using SQLite and visualizes key insights with R.
 
 ## Features  
-✔ SQL queries to extract population, income, and housing trends.  
-✔ R scripts for data visualization using ggplot2.  
-✔ Reproducible analysis for Business Analytics projects.  
+- SQL queries to extract population, income, and housing trends.  
+- R scripts for data visualization using ggplot2.  
+- Reproducible analysis for Business Analytics projects.  
 
 ## Project Objectives
 
@@ -21,8 +21,8 @@ The objectives of this project are:
 
 The project consists of the following key components:
 
-- queries/insights.sql: Contains all SQL queries used to extract insights from the SQLite database.
-- scripts/analysis_r.R: The primary R script that connects to the SQLite database, retrieves data, and generates visualizations.
+- **queries/insights.sql:** Contains all SQL queries used to extract insights from the SQLite database.
+- **scripts/analysis_r.R:** The primary R script that connects to the SQLite database, retrieves data, and generates visualizations.
 
 ## Folder Structure  
 - `sql/` → Contains all SQL queries.  
