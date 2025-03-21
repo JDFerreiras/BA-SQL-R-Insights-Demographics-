@@ -31,4 +31,11 @@ The project consists of the following key components:
 - `images/` → Saved plots for easy reference.  
 - `data/` → **(Not included)** Add SQLite database manually.  
 
+## Local Setup and Installation
 
+Prerequisites
+
+To run this project, ensure you have the following installed:
+
+- SQLite: A lightweight database engine for querying the dataset.
+- R (Version 4.0 or higher): Required for running the visualization scripts.
