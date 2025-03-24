@@ -1,47 +1,47 @@
-## State with the Largest Population
+- State with the Largest Population
 SELECT name, total_population 
 FROM states 
 ORDER BY total_population DESC 
 LIMIT 1;
 
-## States with the Highest Percentage of Hispanic Population
+- States with the Highest Percentage of Hispanic Population
 SELECT name, (hispanic * 100.0 / total_population) AS percent_hispanic
 FROM states
 ORDER BY percent_hispanic DESC
 LIMIT 5;
 
-## Median Household Income by State
+- Median Household Income by State
 SELECT name, median_household_income 
 FROM states 
 ORDER BY median_household_income DESC 
 LIMIT 5;
 
-## States with the Largest Population Below the Poverty Line
+- States with the Largest Population Below the Poverty Line
 SELECT name, below_poverty_line 
 FROM states 
 ORDER BY below_poverty_line DESC 
 LIMIT 5;
 
-## States with the Highest Percentage of Foreign-Born Population
+- States with the Highest Percentage of Foreign-Born Population
 SELECT name, (foreign_born_population * 100.0 / total_population) AS percent_foreign_born
 FROM states
 ORDER BY percent_foreign_born DESC
 LIMIT 5;
 
-## Median Home Value by State
+- Median Home Value by State
 SELECT name, owner_occupied_homes_median_value 
 FROM states 
 ORDER BY owner_occupied_homes_median_value DESC 
 LIMIT 5;
 
-## Average Household Income by State Considering Districts
+- Average Household Income by State Considering Districts
 SELECT s.name, AVG(c.median_household_income) AS avg_income
 FROM states s
 JOIN congressional_districts c ON s.state = c.state
 GROUP BY s.name
 ORDER BY avg_income DESC;
 
-### Ranking States by Foreign-Born Population
+- Ranking States by Foreign-Born Population
 SELECT name, foreign_born_population, 
        RANK() OVER (ORDER BY foreign_born_population DESC) AS rank
 FROM states;
