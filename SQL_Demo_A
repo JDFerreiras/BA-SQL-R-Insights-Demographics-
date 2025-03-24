@@ -1,1 +1,37 @@
+-- Estado con Mayor Población
+SELECT name, total_population 
+FROM states 
+ORDER BY total_population DESC 
+LIMIT 1;
+
+-- Estados con Mayor Porcentaje de Población Hispana
+SELECT name, (hispanic * 100.0 / total_population) AS percent_hispanic
+FROM states
+ORDER BY percent_hispanic DESC
+LIMIT 5;
+
+-- Ingreso Medio por Estado
+SELECT name, median_household_income 
+FROM states 
+ORDER BY median_household_income DESC 
+LIMIT 5;
+
+-- Estados con Mayor Población Bajo la Línea de Pobreza
+SELECT name, below_poverty_line 
+FROM states 
+ORDER BY below_poverty_line DESC 
+LIMIT 5;
+
+-- Estados con Mayor Porcentaje de Población Nacida en el Extranjero
+SELECT name, (foreign_born_population * 100.0 / total_population) AS percent_foreign_born
+FROM states
+ORDER BY percent_foreign_born DESC
+LIMIT 5;
+
+-- Valor Medio de Casas por Estado
+SELECT name, owner_occupied_homes_median_value 
+FROM states 
+ORDER BY owner_occupied_homes_median_value DESC 
+LIMIT 5;
+
 
