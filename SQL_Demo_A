@@ -1,37 +1,59 @@
--- Estado con Mayor Población
+## State with the Largest Population
 SELECT name, total_population 
 FROM states 
 ORDER BY total_population DESC 
 LIMIT 1;
 
--- Estados con Mayor Porcentaje de Población Hispana
+## States with the Highest Percentage of Hispanic Population
 SELECT name, (hispanic * 100.0 / total_population) AS percent_hispanic
 FROM states
 ORDER BY percent_hispanic DESC
 LIMIT 5;
 
--- Ingreso Medio por Estado
+## Median Household Income by State
 SELECT name, median_household_income 
 FROM states 
 ORDER BY median_household_income DESC 
 LIMIT 5;
 
--- Estados con Mayor Población Bajo la Línea de Pobreza
+## States with the Largest Population Below the Poverty Line
 SELECT name, below_poverty_line 
 FROM states 
 ORDER BY below_poverty_line DESC 
 LIMIT 5;
 
--- Estados con Mayor Porcentaje de Población Nacida en el Extranjero
+## States with the Highest Percentage of Foreign-Born Population
 SELECT name, (foreign_born_population * 100.0 / total_population) AS percent_foreign_born
 FROM states
 ORDER BY percent_foreign_born DESC
 LIMIT 5;
 
--- Valor Medio de Casas por Estado
+## Median Home Value by State
 SELECT name, owner_occupied_homes_median_value 
 FROM states 
 ORDER BY owner_occupied_homes_median_value DESC 
 LIMIT 5;
 
+## Average Household Income by State Considering Districts
+SELECT s.name, AVG(c.median_household_income) AS avg_income
+FROM states s
+JOIN congressional_districts c ON s.state = c.state
+GROUP BY s.name
+ORDER BY avg_income DESC;
+
+### Ranking States by Foreign-Born Population
+SELECT name, foreign_born_population, 
+       RANK() OVER (ORDER BY foreign_born_population DESC) AS rank
+FROM states;
+
+### Filtering States with More Than 15% of Population Below the Poverty Line
+WITH high_poverty AS (
+    SELECT name, below_poverty_line, total_population, 
+           (below_poverty_line * 100.0 / total_population) AS poverty_rate
+    FROM states
+)
+SELECT name, poverty_rate 
+FROM high_poverty 
+WHERE poverty_rate > 15 
+ORDER BY poverty_rate DESC;
 
