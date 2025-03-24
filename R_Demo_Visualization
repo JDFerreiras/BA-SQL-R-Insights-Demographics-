@@ -1,0 +1,68 @@
+library(ggplot2)
+library(dplyr)
+
+# 1️⃣ Estado con Mayor Población
+data1 <- data.frame(name = "California", total_population = 39144818)
+ggplot(data1, aes(x = name, y = total_population, label = total_population)) +
+  geom_bar(stat = "identity", fill = "#ea111c") +
+  geom_text(vjust = -0.5, color = "black") +
+  labs(title = "Estado con Mayor Población", y = "Población Total", x = "Estado")
+
+# 2️⃣ Estados con Mayor Porcentaje de Población Hispana
+data2 <- data.frame(
+  name = c("Puerto Rico", "New Mexico", "Texas", "California", "Arizona"),
+  percent_hispanic = c(98.94, 48.02, 38.85, 38.79, 30.73)
+)
+ggplot(data2, aes(x = reorder(name, -percent_hispanic), y = percent_hispanic, label = percent_hispanic)) +
+  geom_bar(stat = "identity", fill = "#ea111c") +
+  geom_text(vjust = -0.5, color = "black") +
+  labs(title = "Estados con Mayor Porcentaje de Población Hispana", 
+       y = "Porcentaje (%)", x = "Estado") +
+  coord_flip()
+
+# 3️⃣ Ingreso Medio por Estado
+data3 <- data.frame(
+  name = c("Maryland", "District of Columbia", "Hawaii", "Alaska", "New Jersey"),
+  median_income = c(75847, 75628, 73486, 73355, 72222)
+)
+ggplot(data3, aes(x = reorder(name, median_income), y = median_income, label = median_income)) +
+  geom_bar(stat = "identity", fill = "#ea111c") +
+  geom_text(vjust = -0.5, color = "black") +
+  labs(title = "Ingreso Medio por Estado", y = "Ingreso Medio (USD)", x = "Estado") +
+  coord_flip()
+
+# 4️⃣ Estados con Mayor Población Bajo la Línea de Pobreza
+data4 <- data.frame(
+  name = c("California", "Texas", "Florida", "New York", "Illinois"),
+  below_poverty_line = c(5891678, 4255517, 3116886, 2970032, 1703258)
+)
+ggplot(data4, aes(x = reorder(name, -below_poverty_line), y = below_poverty_line, label = below_poverty_line)) +
+  geom_bar(stat = "identity", fill = "#ea111c") +
+  geom_text(vjust = -0.5, color = "black") +
+  labs(title = "Estados con Mayor Población Bajo la Línea de Pobreza", 
+       y = "Población Bajo la Pobreza", x = "Estado") +
+  coord_flip()
+
+# 5️⃣ Estados con Mayor Porcentaje de Población Nacida en el Extranjero
+data5 <- data.frame(
+  name = c("California", "New York", "New Jersey", "Florida", "Nevada"),
+  percent_foreign_born = c(27.30, 22.88, 22.07, 20.16, 19.31)
+)
+ggplot(data5, aes(x = reorder(name, -percent_foreign_born), y = percent_foreign_born, label = percent_foreign_born)) +
+  geom_bar(stat = "identity", fill = "#ea111c") +
+  geom_text(vjust = -0.5, color = "black") +
+  labs(title = "Estados con Mayor Porcentaje de Población Nacida en el Extranjero", 
+       y = "Porcentaje (%)", x = "Estado") +
+  coord_flip()
+
+# 6️⃣ Valor Medio de Casas por Estado
+data6 <- data.frame(
+  name = c("Hawaii", "District of Columbia", "California", "Massachusetts", "New Jersey"),
+  median_home_value = c(566900, 551300, 449100, 352100, 322600)
+)
+ggplot(data6, aes(x = reorder(name, median_home_value), y = median_home_value, label = median_home_value)) +
+  geom_bar(stat = "identity", fill = "#ea111c") +
+  geom_text(vjust = -0.5, color = "black") +
+  labs(title = "Valor Medio de Casas por Estado", 
+       y = "Valor Medio (USD)", x = "Estado") +
+  coord_flip()
